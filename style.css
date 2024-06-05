@@ -7,6 +7,9 @@
 :root {
   --white: #ffffff;
   --black: #000000;
+  --area-bg: #f8f8f8;
+  --orange: #ff8553;
+  --orange-2: #ffe7de;
 }
 
 html {
@@ -16,6 +19,7 @@ html {
 .container {
   max-width: 120rem;
   margin: 0 auto;
+  overflow: hidden;
 }
 
 /* ///////////////////////////////////SECTION-HERO-START//////////////////////////////////// */
@@ -122,6 +126,171 @@ nav {
 
 .section_skills {
   position: relative;
+  font-family: 'DM Sans', sans-serif;
+  overflow: hidden;
+  padding: 12rem 0 12rem 0;
+  margin-top: 8rem;
 }
 
 /* ///////////////////////////////////SECTION-SKILLS-START//////////////////////////////////// */
+
+.section_skills::before {
+  content: '';
+  position: absolute;
+  width: 74%;
+  height: 100%;
+  background-color: var(--area-bg);
+  border-radius: 0 90px 0 90px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.title {
+  font-size: 5rem;
+  font-weight: 400;
+}
+
+.skills_content {
+  display: flex;
+  gap: 6rem;
+  align-items: center;
+  justify-items: center;
+  margin-top: 3.5rem;
+}
+
+.skills_content_1,
+.skills_content_2 {
+  width: 50%;
+}
+
+.skills_content_1 p {
+  font-size: 1.6rem;
+  color: var(--black);
+  line-height: 1.6;
+  font-weight: 500;
+  margin-bottom: 3.5rem;
+}
+
+.skills_content_1 h2 {
+  font-size: 2.6rem;
+  color: var(--orange);
+}
+
+.skills_content_2 {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+}
+
+.skill_name {
+  font-size: 1.6rem;
+  color: var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.skill_name span {
+  color: var(--orange);
+}
+
+.loading_bar {
+  width: 100%;
+  height: 4px;
+  position: relative;
+  background-color: var(--orange-2);
+  border-radius: 20px;
+}
+
+.progress_bar {
+  background-color: var(--orange);
+  border-radius: 20px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.progress_bar_1 {
+  animation: progress_1 0.8s linear forwards;
+}
+
+.progress_bar_2 {
+  animation: progress_2 0.8s linear forwards;
+}
+
+.progress_bar_3 {
+  animation: progress_3 0.8s linear forwards;
+}
+
+@keyframes progress_1 {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 90%;
+  }
+}
+
+@keyframes progress_2 {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 75%;
+  }
+}
+
+@keyframes progress_3 {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 80%;
+  }
+}
+
+.slider {
+  max-width: 50rem; /* Adjust width as needed */
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto;
+  /* display: flex;
+  gap: 2rem; */
+}
+
+.slide {
+  flex-shrink: 0;
+  width: 15%; /* Adjust width as needed */
+  height: auto;
+}
+
+.slide:first-child {
+  animation: slide1 10s linear infinite; /* Adjust timing as needed */
+}
+
+.slide:nth-child(2) {
+  animation: slide2 10s linear infinite; /* Adjust timing as needed */
+}
+
+@keyframes slide1 {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(50rem);
+  }
+}
+
+@keyframes slide2 {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(50rem);
+  }
+}
