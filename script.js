@@ -5,6 +5,8 @@ const showWorkBtn = document.querySelector('.show_btn');
 const sectionHero = document.querySelector('.section_hero');
 const nav = document.querySelector('.nav');
 const sections = document.querySelectorAll('.section');
+const loadingBars = document.querySelectorAll('.progress_bar');
+const grid4 = document.querySelector('.grid_item_4');
 
 showWorkBtn.addEventListener('click', function () {
   hiddenWorks.forEach((el) => {
@@ -48,4 +50,28 @@ const revealObserver = new IntersectionObserver(function (entries) {
 sections.forEach((section) => {
   revealObserver.observe(section);
   section.classList.add('section_hidden');
+});
+
+const loadingOptions = {
+  root: null,
+  threshold: 1,
+  rootMargin: '100px',
+};
+
+const loadingObserver = new IntersectionObserver(function (entries) {
+  const [entry] = entries;
+  if (entry.isIntersecting) {
+    entry.target.classList.add(`progress_bar_${entry.target.dataset.id}`);
+    loadingObserver.unobserve(entry.target);
+  }
+}, loadingOptions);
+
+loadingBars.forEach((loadingBar) => {
+  loadingObserver.observe(loadingBar);
+});
+
+window.addEventListener('resize', () => {
+  if (window.matchMedia(`(width:840px)`).matches) {
+    grid4.classList.remove('hide');
+  }
 });
